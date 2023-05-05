@@ -25,6 +25,14 @@ grep -rlZ 'sso.pietersmalan.com' . | xargs -0 sed -i.bak 's/sso.pietersmalan.com
 
 grep -rlZ '10.0.1.189' . | xargs -0 sed -i.bak 's/10.0.1.189/192.168.89.12/g'
 
-## Run Installation script
-scripts/install.sh
+Also have a look at 01_users.sh to update passwords if required.
 
+## Run Installation script
+
+As root user:
+
+cd scripts
+chmod +x *.sh
+install.sh
+
+* Note the "su -c" on scripts 04 and 07 to run as specified user.
