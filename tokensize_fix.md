@@ -73,6 +73,7 @@ Listen *:6666
 
 # 4. /home/sso/rh-sso-7.6/domain/configuration/domain.xml
 
+```
 
 domain.xml:504:                    <http-listener name="default" socket-binding="http" redirect-socket="https" enable-http2="true" max-header-size="65536" />
 domain.xml:505:                    <https-listener name="https" socket-binding="https" security-realm="ApplicationRealm" enable-http2="true" max-header-size="65536" />
@@ -80,6 +81,8 @@ domain.xml:1048:                    <http-listener name="default" socket-binding
 domain.xml:1049:                    <https-listener name="https" socket-binding="https" security-realm="ApplicationRealm" enable-http2="true" max-header-size="65536" />
 domain.xml:1106:                    <http-listener name="default" socket-binding="http" redirect-socket="https" enable-http2="true" max-header-size="65536" />
 domain.xml:1107:                    <http-listener name="management" socket-binding="mcmp-management" enable-http2="true" max-header-size="65536" />
+
+```
 
 In domain.xml:31: add   <property name="org.apache.coyote.http11.Http11Protocol.MAX_HEADER_SIZE" value="65535"/> as in:
 
