@@ -71,6 +71,7 @@ Listen *:6666
 
 ```
 
+
 # 4. /home/sso/rh-sso-7.6/domain/configuration/domain.xml
 
 ```
