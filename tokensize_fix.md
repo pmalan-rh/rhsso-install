@@ -1,6 +1,7 @@
 # 1. /opt/jbcs-httpd24-2.4/httpd/conf/httpd.conf at end of file:
 
-~~~
+```
+
 LimitRequestFieldSize 65535
 LimitRequestLine 65535
 ProxyIOBufferSize 65535
@@ -9,11 +10,13 @@ ProxyIOBufferSize 65535
 # Load config files from the config directory "/etc/httpd/conf.d".
 #
 IncludeOptional conf.d/*.conf
-~~~
+
+```
 
 # 2. /opt/jbcs-httpd24-2.4/httpd/conf.d/ssl.conf
 
-~~~
+```
+
 <VirtualHost _default_:443>
 ServerName  sso.pietersmalan.com
 
@@ -31,11 +34,13 @@ ProxyPass / http://sso.pietersmalan.com:6666/ responsefieldsize=655360 iobuffers
 ProxyPassReverse / http://sso.pietersmalan.com:6666/
 
 </VirtualHost>
-~~~
+
+```
 
 # 3. /opt/jbcs-httpd24-2.4/httpd/conf.d/mod_proxy_cluster.conf
 
-~~~
+```
+
 # mod_proxy_balancer should be disabled when mod_cluster is used
 LoadModule proxy_cluster_module modules/mod_proxy_cluster.so
 LoadModule cluster_slotmem_module modules/mod_cluster_slotmem.so
@@ -63,7 +68,8 @@ Listen *:6666
 </Location>
 </VirtualHost>
 </IfModule>
-~~~
+
+```
 
 # 4. /home/sso/rh-sso-7.6/domain/configuration/domain.xml
 
@@ -77,8 +83,12 @@ domain.xml:1107:                    <http-listener name="management" socket-bind
 
 In domain.xml:31: add   <property name="org.apache.coyote.http11.Http11Protocol.MAX_HEADER_SIZE" value="65535"/> as in:
 
+```
+
     <system-properties>
             <property name="java.net.preferIPv4Stack" value="true"/>
             <property name="org.apache.coyote.http11.Http11Protocol.MAX_HEADER_SIZE" value="65535"/>
             <property name="org.apache.coyote.ajp.MAX_PACKET_SIZE" value="65536"/>
     </system-properties>
+
+```
